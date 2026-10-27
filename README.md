@@ -29,3 +29,6 @@ dominant. Animation can be enabled and disabled using the `animate` boolean attr
 An animated instance of SAMc with sliders to change valence, arousal, and dominance can be found in
 [demos/dynamic.html](./demos/dynamic.html) while [demos/dynamic.html](./demos/dynamic.html) displays
 25 different combinations of valence, arousal, and dominance values with animation disabled.
+
+Note that JS modules can’t be loaded locally (with a `file://` URL) so you’ll need to run a local
+server to view the demos and use the SAMc JS module for local development.
