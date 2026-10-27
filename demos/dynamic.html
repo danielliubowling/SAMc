@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SAMc</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body
+    {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+    }
+    main
+    {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    div.display
+    {
+      position: relative;
+      flex: 1 0 auto;
+      min-height: 8rem;
+    }
+    div.display sam-c
+    {
+      position: absolute;
+      inset: 0;
+    }
+    div.controls
+    {
+      padding: 1rem;
+    }
+    div.controls > div + div
+    {
+      margin-top: 1rem;
+    }
+    div.labels
+    {
+      display: flex;
+      justify-content: space-between
+    }
+    div.controls input
+    {
+      width: 100%;
+    }
+  </style>
+  <script type="module" src="../custom_elements/sam-c.js"></script>
+</head>
+<body>
+
+<main>
+  <div class="display">
+    <sam-c animate></sam-c>
+  </div>
+  <div class="controls">
+    <div>
+      <div class="labels">
+        <span>Negative</span>
+        <span>Neutral valence</span>
+        <span>Positive</span>
+      </div>
+      <input type="range" name="valence" step="0.01" min="-1" max="1">
+    </div>
+    <div>
+      <div class="labels">
+        <span>Low-energy</span>
+        <span>Neutral arousal</span>
+        <span>High-energy</span>
+      </div>
+      <input type="range" name="arousal" step="0.01" min="-1" max="1">
+    </div>
+    <div>
+      <div class="labels">
+        <span>Submissive</span>
+        <span>Neutral dominance</span>
+        <span>Dominant</span>
+      </div>
+      <input type="range" name="dominance" step="0.01" min="-1" max="1">
+    </div>
+  </div>
+</main>
+
+<script>
+const sam = document.querySelector('sam-c')
+const controls = document.querySelectorAll('input[type=range]')
+
+controls.forEach(control => {
+  control.addEventListener('input', () => {
+    sam.setAttribute(control.name, control.value)
+  })
+})
+</script>
+
+</body>
+</html>
